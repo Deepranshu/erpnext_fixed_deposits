@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "FDCR.####",
+ "creation": "2023-04-13 21:06:58.968278",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "amount_invested",
+  "date_of_deposit",
+  "date_of_maturity",
+  "net_interest",
+  "company",
+  "column_break_hnuj1",
+  "rate_of_interest",
+  "no_of_days",
+  "tds",
+  "interest_amount",
+  "before_one_week_of_the_maturity",
+  "bank_details_tab",
+  "bank_account",
+  "tds_account",
+  "column_break_hzs3y",
+  "interest_account",
+  "fdr_account",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bank Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_invested",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount Invested",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_deposit",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Deposit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_maturity",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Maturity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "net_interest",
+   "fieldtype": "Currency",
+   "label": "Net Interest"
+  },
+  {
+   "fieldname": "column_break_hnuj1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rate_of_interest",
+   "fieldtype": "Float",
+   "label": " Rate of Interest",
+   "reqd": 1
+  },
+  {
+   "fieldname": "no_of_days",
+   "fieldtype": "Int",
+   "label": "No. of Days",
+   "reqd": 1
+  },
+  {
+   "default": "10",
+   "fieldname": "tds",
+   "fieldtype": "Float",
+   "label": "TDS (%)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "interest_amount",
+   "fieldtype": "Currency",
+   "label": "Interest amount"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Fixed Deposit Control Register",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "before_one_week_of_the_maturity",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Before One Week Of The Maturity"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Fixed Deposit Control Register",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "bank_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Bank Details"
+  },
+  {
+   "fieldname": "column_break_hzs3y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tds_account",
+   "fieldtype": "Link",
+   "label": "TDS Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "interest_account",
+   "fieldtype": "Link",
+   "label": "Interest Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fdr_account",
+   "fieldtype": "Link",
+   "label": "FDR Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "cheque_no"
+  }
+ ],
+ "modified": "2023-04-24 12:46:52.583043",
+ "modified_by": "Administrator",
+ "module": "erpnext_fixed_deposits",
+ "name": "Fixed Deposit Control Register",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
