@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:EER-{MM}-{YY}-{#####}",
+ "creation": "2023-06-25 17:09:57.473802",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name_of_the_empolyee",
+  "basic_pay",
+  "column_break_q6wkt",
+  "name_of_the_patient",
+  "rescential_address",
+  "qualification_name",
+  "section_break_j6s2e",
+  "registration_no_of_the_doctor",
+  "period_of_treatment",
+  "particulars_of_reimbursement",
+  "amt_claimed",
+  "amt_admissible",
+  "column_break_mzuyb",
+  "cunsulsation",
+  "cost_of_medicine",
+  "injection_charges",
+  "pathoiagical_charges",
+  "other_charges",
+  "total",
+  "column_break_znrnh",
+  "dated",
+  "employee_signature",
+  "medical",
+  "travel",
+  "mobile",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_of_the_empolyee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Name Of The Empolyee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "basic_pay",
+   "fieldtype": "Currency",
+   "label": "Basic Pay"
+  },
+  {
+   "fieldname": "column_break_q6wkt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "name_of_the_patient",
+   "fieldtype": "Data",
+   "label": "Name Of The Patient"
+  },
+  {
+   "fieldname": "rescential_address",
+   "fieldtype": "Small Text",
+   "label": "Rescential Address"
+  },
+  {
+   "fieldname": "qualification_name",
+   "fieldtype": "Data",
+   "label": "Qualification Name"
+  },
+  {
+   "fieldname": "section_break_j6s2e",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "registration_no_of_the_doctor",
+   "fieldtype": "Data",
+   "label": "Registration No Of The Doctor"
+  },
+  {
+   "fieldname": "period_of_treatment",
+   "fieldtype": "Int",
+   "label": "Period Of Treatment"
+  },
+  {
+   "fieldname": "particulars_of_reimbursement",
+   "fieldtype": "Data",
+   "label": "Particulars Of Reimbursement"
+  },
+  {
+   "fieldname": "amt_claimed",
+   "fieldtype": "Currency",
+   "label": "Amt Claimed"
+  },
+  {
+   "fieldname": "amt_admissible",
+   "fieldtype": "Currency",
+   "label": "Amt Admissible"
+  },
+  {
+   "fieldname": "column_break_mzuyb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cunsulsation",
+   "fieldtype": "Currency",
+   "label": "Cunsulsation"
+  },
+  {
+   "fieldname": "cost_of_medicine",
+   "fieldtype": "Currency",
+   "label": "Cost Of Medicine"
+  },
+  {
+   "fieldname": "injection_charges",
+   "fieldtype": "Float",
+   "label": "Injection Charges"
+  },
+  {
+   "fieldname": "pathoiagical_charges",
+   "fieldtype": "Float",
+   "label": "Pathoiagical Charges"
+  },
+  {
+   "fieldname": "other_charges",
+   "fieldtype": "Currency",
+   "label": "Other Charges"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "label": "Total"
+  },
+  {
+   "fieldname": "column_break_znrnh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dated",
+   "fieldtype": "Date",
+   "label": "Dated"
+  },
+  {
+   "fieldname": "employee_signature",
+   "fieldtype": "Data",
+   "label": "Employee Signature"
+  },
+  {
+   "fieldname": "medical",
+   "fieldtype": "Data",
+   "label": "Medical"
+  },
+  {
+   "fieldname": "travel",
+   "fieldtype": "Data",
+   "label": "Travel"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Empolyee Expenses Reimbursement",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-25 18:44:59.465050",
+ "modified_by": "Administrator",
+ "module": "erpnext_fixed_deposits",
+ "name": "Empolyee Expenses Reimbursement",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

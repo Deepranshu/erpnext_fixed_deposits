@@ -1,0 +1,63 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"XWvo7ewesa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">FIxed Deposite Control Register</span>\",\"col\":12}},{\"id\":\"YTvDj88CIQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fixed Deposit Control Register\",\"col\":5}},{\"id\":\"MSn0E6rF1C\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"FD Report\",\"col\":7}},{\"id\":\"45C9Ije-tX\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"UHxiNXlE1n\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"KoSyM589Rw\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Security Deposit Register<b></b></span>\",\"col\":12}},{\"id\":\"dBe6TRBrx5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Security Deposit Register\",\"col\":5}},{\"id\":\"jriYp8U_If\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Report\",\"col\":6}}]",
+ "creation": "2023-04-14 10:26:58.904552",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "BG and FDRs",
+ "links": [],
+ "modified": "2023-06-15 18:07:56.588803",
+ "modified_by": "Administrator",
+ "module": "erpnext_fixed_deposits",
+ "name": "BG and FDRs",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Bank Manager"
+  },
+  {
+   "role": "Bank User"
+  }
+ ],
+ "sequence_id": 29.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "FD Report",
+   "link_to": "Before One Week Of The Maturity",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Report",
+   "link_to": "Before One Week Of The Completion Of Three Years Period",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Fixed Deposit Control Register",
+   "link_to": "Fixed Deposit Control Register",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Employee Security Deposit Register",
+   "link_to": "Employee Security Deposit Register",
+   "type": "DocType"
+  }
+ ],
+ "title": "BG and FDRs"
+}
