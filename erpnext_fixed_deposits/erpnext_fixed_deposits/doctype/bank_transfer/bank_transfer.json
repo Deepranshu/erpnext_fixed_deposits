@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:BT-{MM}-{YY}-{#####}",
+ "creation": "2023-06-16 22:13:37.476220",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bank_account_from",
+  "bank_account_number_from",
+  "bank_account_to",
+  "bank_account_number_to",
+  "column_break_lfien",
+  "amount",
+  "company",
+  "amended_from",
+  "section_break_yfd14",
+  "accounts"
+ ],
+ "fields": [
+  {
+   "fieldname": "bank_account_from",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bank Account From",
+   "options": "Bank Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_account_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bank Account To",
+   "options": "Bank Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Bank Transfer",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "bank_account_from.company",
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "label": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_lfien",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "bank_account_from.bank_account_no",
+   "fieldname": "bank_account_number_from",
+   "fieldtype": "Data",
+   "label": "Bank Account Number From"
+  },
+  {
+   "fetch_from": "bank_account_to.bank_account_no",
+   "fieldname": "bank_account_number_to",
+   "fieldtype": "Data",
+   "label": "Bank Account Number To"
+  },
+  {
+   "fieldname": "section_break_yfd14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "accounts",
+   "fieldtype": "Table",
+   "label": "Accounting Entries",
+   "options": "Journal Entry Account"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Journal Entry",
+   "link_fieldname": "cheque_no"
+  }
+ ],
+ "modified": "2023-06-17 13:38:34.642371",
+ "modified_by": "Administrator",
+ "module": "erpnext_fixed_deposits",
+ "name": "Bank Transfer",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Bank User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Bank Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
