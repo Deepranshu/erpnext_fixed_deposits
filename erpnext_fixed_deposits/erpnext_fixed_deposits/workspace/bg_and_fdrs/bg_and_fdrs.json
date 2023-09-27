@@ -2,6 +2,7 @@
  "charts": [],
  "content": "[{\"id\":\"XWvo7ewesa\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">FIxed Deposite Control Register</span>\",\"col\":12}},{\"id\":\"YTvDj88CIQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fixed Deposit Control Register\",\"col\":5}},{\"id\":\"MSn0E6rF1C\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"FD Report\",\"col\":7}},{\"id\":\"45C9Ije-tX\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"UHxiNXlE1n\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"KoSyM589Rw\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Employee Security Deposit Register<b></b></span>\",\"col\":12}},{\"id\":\"dBe6TRBrx5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Security Deposit Register\",\"col\":5}},{\"id\":\"jriYp8U_If\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Report\",\"col\":6}}]",
  "creation": "2023-04-14 10:26:58.904552",
+ "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
@@ -11,7 +12,7 @@
  "is_hidden": 0,
  "label": "BG and FDRs",
  "links": [],
- "modified": "2023-06-15 18:07:56.588803",
+ "modified": "2023-09-13 12:30:52.229850",
  "modified_by": "Administrator",
  "module": "erpnext_fixed_deposits",
  "name": "BG and FDRs",
@@ -28,7 +29,7 @@
    "role": "Bank User"
   }
  ],
- "sequence_id": 29.0,
+ "sequence_id": 19.0,
  "shortcuts": [
   {
    "color": "Grey",

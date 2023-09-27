@@ -29,7 +29,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Sales Invoice" : "public/js/sales_invoice.js","Purchase Invoice": "public/js/purchase_invoice.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -118,7 +118,16 @@ doc_events = {
 		"on_submit": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_after_amount",
 	}
 }
-
+doc_events = {
+	"Sales Invoice": {
+		"validate": "erpnext_fixed_deposits.hook.sales_invoice.validate",
+		#"on_submit"  : "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_after_amount",
+        "before_save"  : "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_amount",
+  	    #"on_submit": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_general_ledger_amount",
+        #"before_save": "erpnext_fixed_deposits.hook.sales_invoice.tax_amount_overwrite",
+        #"on_submit": "erpnext_fixed_deposits.hook.sales_invoice.tax_amount_overwrite_database",
+	}
+}
 # Scheduled Tasks
 # ---------------
 
@@ -209,3 +218,6 @@ scheduler_events = {
 # auth_hooks = [
 #	"erpnext_fixed_deposits.auth.validate"
 # ]
+
+
+#fixtures =["Print Format"]
