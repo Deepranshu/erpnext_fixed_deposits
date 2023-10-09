@@ -248,13 +248,13 @@ frappe.ui.form.on('Purchase Invoice', {
         });
         
         
-        //  frm.set_query("supplier", function() {
-        //     return {
-        //         "filters": {
-        //             "workflow_state": "Approved",
-        //         }
-        //     };
-        // });  
+         frm.set_query("supplier", function() {
+            return {
+                "filters": {
+                    "workflow_state": "Approved",
+                }
+            };
+        });  
         
         
         
@@ -266,7 +266,31 @@ frappe.ui.form.on('Purchase Invoice', {
     before_save: function(frm){
         // Calculate Taxes on before save
         calculate_advance_tax(frm);
-    }
+        
+        // Calculate advance deduction
+        calculate_advance_allocated_amount(frm);
+        
+        let taxes_and_charges_added = frm.doc.taxes_and_charges_added;
+        let taxes_and_charges_deducted_before = frm.doc.taxes_and_charges_deducted_before;
+        let final_tax = taxes_and_charges_added - taxes_and_charges_deducted_before;
+        frm.set_value('taxes_and_charges_deducted',final_tax)
+
+        // Function to set total advance value
+	    set_and_validate_advance_with_gst(frm);
+    },
+    /*after_save: function(frm){
+        // Calculate Outstanding amount
+        let grand_total = frm.doc.grand_total;
+        let custom_total_advance = frm.doc.custom_total_advance;
+        let final_outstanding = 0;
+        let advances = frm.doc.advances;
+        if(advances.length != 0){
+            final_outstanding = grand_total - custom_total_advance;
+            frm.set_value('custom_outstanding_amount',final_outstanding)
+        }else{
+            frm.set_value('custom_outstanding_amount',0)
+        }
+    }*/
 // 	"gst_tds": function(frm) {
 	    
 // 	    if ((frm.selected_doc.gst_tds)&& (!frm.selected_doc.tax_category)){
@@ -337,7 +361,6 @@ frappe.ui.form.on('Purchase Invoice', {
 })
 
 
-
 frappe.ui.form.on('Purchase Invoice Advance', {
 	allocated_amount: function(frm,cdt,cdn){
         // Calculate tax amount
@@ -364,11 +387,33 @@ function calculate_tax_amount(frm,cdt,cdn){
             callback: function(r){
                 // console.log(r.message,'message')
                 let taxes = r.message.taxes;
-                taxes.forEach(function(item,index){
+                taxes.forEach(function (taxItem, taxIndex) {
+                    let advance_tax = 0;
+                    frappe.call({
+                        'method': 'frappe.client.get',
+                        'args': {
+                            'doctype': 'Account',
+                            'filters': {
+                                'name': taxItem.account_head
+                            }
+                        },
+                        callback: function (res) {
+                            if(res.message.custom_deduct_tax == 1){
+                                advance_tax = (allocated_amount * taxItem.rate) / 100;
+                                final_advance_tax += advance_tax;
+                            }
+                            completedTaxCalculations++;
+                            if (completedTaxCalculations === taxes.length) {
+                                frappe.model.set_value(cdt,cdn,'custom_advance_deduction',final_advance_tax);
+                            }
+                        }
+                    })
+                })
+                /*taxes.forEach(function(item,index){
                     advance_tax = (allocated_amount * item.rate)/100;
                     final_advance_tax += advance_tax;
-                });
-                frappe.model.set_value(cdt,cdn,'custom_advance_deduction',final_advance_tax);
+                });*/
+                // frappe.model.set_value(cdt,cdn,'custom_advance_deduction',final_advance_tax);
             }
         });
     }
@@ -421,5 +466,36 @@ function calculate_advance_tax(frm) {
                 });
             }
         });
+    }
+}
+
+// Function to calculate total allocated amount and total advance deduction from advances
+function calculate_advance_allocated_amount(frm){
+    let advances = frm.doc.advances;
+    let total_allocated_advance = 0;
+    if (advances !== undefined) {
+        advances.forEach(function(item,index){
+            total_allocated_advance += item.custom_advance_deduction;
+        });
+    }
+    frm.set_value('custom_total_deduction',total_allocated_advance);
+    frm.refresh_fields('custom_total_deduction');
+}
+
+// Function to set total advance value
+function set_and_validate_advance_with_gst(frm){
+    let allocated_amount_with_taxes = 0;
+    let grand_total = frm.doc.grand_total;
+    let custom_total_advance = frm.doc.custom_total_advance;
+    let final_outstanding = 0;
+    let tax_amount = 0;
+    let advances = frm.doc.advances;
+
+    if(advances !== undefined){
+        advances.forEach(function(item,index){
+            let final_amount = item.allocated_amount - item.custom_advance_deduction
+            allocated_amount_with_taxes += final_amount
+        })
+        frm.set_value('custom_total_advance',allocated_amount_with_taxes)
     }
 }

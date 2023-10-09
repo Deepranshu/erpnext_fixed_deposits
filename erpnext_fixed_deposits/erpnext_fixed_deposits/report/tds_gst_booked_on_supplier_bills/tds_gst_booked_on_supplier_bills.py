@@ -41,7 +41,6 @@ def get_data():
                         left join `tabPurchase Taxes and Charges` as cgst on cgst.parent = so.name and cgst.account_head = so.custom_cgst_tds_account
                         left join `tabPurchase Taxes and Charges` as sgst on sgst.parent = so.name and sgst.account_head = so.custom_sgst_tds_account
                         left join `tabPurchase Taxes and Charges` as igst on igst.parent = so.name and igst.account_head = so.custom_igst_tds_account
-						 where so.name="PINV-23-00033"
                         group by so.name""", as_dict=1)
     # frappe.msgprint(str(data))
     return data

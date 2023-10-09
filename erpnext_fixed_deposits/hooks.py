@@ -112,17 +112,17 @@ permission_query_conditions = {
 #	}
 # }
 
+# doc_events = {
+# 	"Sales Invoice": {
+# 		# "before_save": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_amount",
+# 		# "on_submit": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_after_amount",
+# 	}
+# }
 doc_events = {
 	"Sales Invoice": {
-		"before_save": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_amount",
-		"on_submit": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_after_amount",
-	}
-}
-doc_events = {
-	"Sales Invoice": {
-		"validate": "erpnext_fixed_deposits.hook.sales_invoice.validate",
+		# "validate": "erpnext_fixed_deposits.hook.sales_invoice.validate",
 		#"on_submit"  : "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_after_amount",
-        "before_save"  : "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_amount",
+        # "before_save"  : "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_amount",
   	    #"on_submit": "erpnext_fixed_deposits.hook.sales_invoice.validate_outstanding_general_ledger_amount",
         #"before_save": "erpnext_fixed_deposits.hook.sales_invoice.tax_amount_overwrite",
         #"on_submit": "erpnext_fixed_deposits.hook.sales_invoice.tax_amount_overwrite_database",

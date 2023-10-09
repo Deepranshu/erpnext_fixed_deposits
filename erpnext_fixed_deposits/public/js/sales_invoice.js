@@ -1,5 +1,10 @@
 frappe.ui.form.on('Sales Invoice', {
 	refresh: function(frm) {
+        if (frm.is_new()){
+            // Due Date cannot be same as posting date
+            change_due_date(frm);
+        }
+        
 	    if(!cur_frm.is_new()){
     	    if((frappe.user_roles.includes("Taxation User"))&&(frm.selected_doc.workflow_state=="E-Invoice Pending")){
         	    frm.add_custom_button(__('Book e-Invoice'), function () {
@@ -58,12 +63,19 @@ frappe.ui.form.on('Sales Invoice', {
 	    calculate_advance_tax_deduction(frm);
 		
 	},
+    posting_date: function(frm){
+	    // Due Date cannot be same as posting date
+        change_due_date(frm);
+	},
 	before_save: function(frm){
 	    // Calculate Taxes on before save
         calculate_advance_tax(frm);
         
         // Calculate Allocated advance
         calculate_advance_allocated_amount(frm);
+
+        // Function to show tax rates in Sales Taxes and Charges table
+        display_tax_rates(frm);
 	},
 	customer_address: function(frm) {
 		
@@ -82,6 +94,12 @@ frappe.ui.form.on('Sales Invoice', {
         // }
     }
 })
+
+frappe.ui.form.on('Sales Invoice Item', {
+	rate: function(frm,cdt,cdn) {
+	    display_tax_rates(frm);
+	}
+});
 
 frappe.ui.form.on('Sales Invoice Advance', {
 	allocated_amount: function(frm,cdt,cdn) {
@@ -170,11 +188,49 @@ function calculate_advance_allocated_amount(frm){
 function calculate_advance_tax_deduction(frm){
     let advances = frm.doc.advances;
     let total_advance_tax = 0;
-    if(advances.length !== 0){
+    if(advances !== undefined){
         advances.forEach(function(item,index){
             total_advance_tax += item.advance_deduction_;
         });
     }
     frm.set_value('custom_total_advance_tax',total_advance_tax);
     frm.refresh_fields('custom_total_advance_tax');
+}
+
+// Function to change due date with respect to Posting Date
+function change_due_date(frm){
+    let postingDate = frm.doc.posting_date;
+    if (postingDate) {
+        var dueDate = frappe.datetime.add_days(postingDate, 2);
+        frm.set_value('due_date', dueDate);
+    }
+}
+
+// Function to show tax rates in Sales Taxes and Charges table
+function display_tax_rates(frm){
+    let items = frm.doc.items;
+    items.forEach(function(item,index){
+        if(item.item_tax_template){
+            frappe.call({
+                'method': 'frappe.client.get',
+                'args': {
+                    'doctype': 'Item Tax Template',
+                    'filters': {
+                        'name': item.item_tax_template
+                    }
+                },
+                callback: function (r) {
+                    let tax_table = r.message.taxes;
+                    let sales_taxes_table = frm.doc.taxes;
+                    sales_taxes_table.forEach(function(row,idx){
+                        tax_table.forEach(function(key,value){
+                            if(row.account_head == key.tax_type){
+                                row.rate = key.tax_rate;
+                            }
+                        })
+                    })
+                }
+            });
+        }
+    })
 }
