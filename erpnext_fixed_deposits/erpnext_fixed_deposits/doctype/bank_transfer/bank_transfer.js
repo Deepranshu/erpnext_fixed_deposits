@@ -3,8 +3,17 @@
 
 frappe.ui.form.on('Bank Transfer', {
 	// refresh: function(frm) {
-
-	// }
+	// 	console.log('asdfsfsdf')
+	// 	frappe.call({
+	// 		method: "erpnext_fixed_deposits.erpnext_fixed_deposits.erpnext_fixed_deposits.doctype.bank_transfer.bank_transfer.naming_series",
+	// 		args: {
+	// 			"name":frm.doc.name
+	// 		},
+	// 		callback: function(r) {
+	// 			console.log(r)
+	// 		}
+	// 	});
+	// },
 	account_from:function(frm) {
 		frappe.call({
 			method: "erpnext.accounts.utils.get_balance_on",

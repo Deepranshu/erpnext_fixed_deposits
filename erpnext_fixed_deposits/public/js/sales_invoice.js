@@ -2,7 +2,7 @@ frappe.ui.form.on('Sales Invoice', {
 	refresh: function(frm) {
         if (frm.is_new()){
             // Due Date cannot be same as posting date
-            change_due_date(frm);
+            // change_due_date(frm);
         }
         
 	    if(!cur_frm.is_new()){
@@ -65,7 +65,7 @@ frappe.ui.form.on('Sales Invoice', {
 	},
     posting_date: function(frm){
 	    // Due Date cannot be same as posting date
-        change_due_date(frm);
+        // change_due_date(frm);
 	},
 	before_save: function(frm){
 	    // Calculate Taxes on before save
@@ -201,7 +201,7 @@ function calculate_advance_tax_deduction(frm){
 function change_due_date(frm){
     let postingDate = frm.doc.posting_date;
     if (postingDate) {
-        var dueDate = frappe.datetime.add_days(postingDate, 2);
+        var dueDate = frappe.datetime.add_days(postingDate, 15);
         frm.set_value('due_date', dueDate);
     }
 }
